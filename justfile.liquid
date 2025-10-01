@@ -3,5 +3,13 @@ build:
         --source-dir "../{{project-name}}" \
         --target-file "{{project-name}}.wasm"
 
+start: build
+    mkdir -p runtime
+    baliusd
+
+get-key:
+    baliusd get-public-key "{{project-name}}" "default"
+
 debug: build
+    mkdir -p runtime
     baliusd --debug
